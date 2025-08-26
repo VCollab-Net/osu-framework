@@ -130,7 +130,7 @@ namespace osu.Framework.Graphics.Veldrid
 
         protected override bool SetTextureImplementation(INativeTexture? texture, int unit)
         {
-            if (texture is not VeldridTexture veldridTexture)
+            if (texture is not IVeldridTexture veldridTexture)
                 return false;
 
             graphicsPipeline.AttachTexture(unit, veldridTexture);
