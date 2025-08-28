@@ -353,6 +353,34 @@ namespace osu.Framework.Graphics.Veldrid
             return image.CloneAs<Rgba32>();
         }
 
+        public unsafe ReadOnlySpan<byte> ExtractTextureRaw(Texture texture)
+        {
+            uint width = texture.Width;
+            uint height = texture.Height;
+
+            using var staging = Factory.CreateTexture(TextureDescription.Texture2D(width, height, 1, 1, texture.Format, TextureUsage.Staging));
+            using var commands = Factory.CreateCommandList();
+            using var fence = Factory.CreateFence(false);
+
+            commands.Begin();
+            commands.CopyTexture(texture, staging, 0, 0);
+            commands.End();
+            Device.SubmitCommands(commands, fence);
+
+            if (!waitForFence(fence, 5000))
+            {
+                Logger.Log("Failed to capture framebuffer content within reasonable time.", level: LogLevel.Important);
+                return new Span<byte>();
+            }
+
+            var resource = Device.Map(staging, MapMode.Read);
+            var span = new ReadOnlySpan<byte>(resource.Data.ToPointer(), (int)resource.SizeInBytes);
+
+            Device.Unmap(staging);
+
+            return span;
+        }
+
         /// <summary>
         /// Waits for a <see cref="Fence"/> to be signalled.
         /// </summary>

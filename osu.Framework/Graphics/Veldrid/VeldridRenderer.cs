@@ -23,6 +23,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using PrimitiveTopology = osu.Framework.Graphics.Rendering.PrimitiveTopology;
+using Texture = Veldrid.Texture;
 
 namespace osu.Framework.Graphics.Veldrid
 {
@@ -233,6 +234,15 @@ namespace osu.Framework.Graphics.Veldrid
                 return null;
 
             return veldridDevice.ExtractTexture<Rgba32>(resource.Texture);
+        }
+        protected internal Image<Rgba32> ExtractTexture(Texture texture)
+        {
+            return veldridDevice.ExtractTexture<Rgba32>(texture);
+        }
+
+        protected internal ReadOnlySpan<byte> ExtractTextureRaw(Texture texture)
+        {
+            return veldridDevice.ExtractTextureRaw(texture);
         }
 
         /// <summary>
