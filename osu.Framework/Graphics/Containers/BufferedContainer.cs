@@ -240,6 +240,8 @@ namespace osu.Framework.Graphics.Containers
 
         private readonly BufferedContainerDrawNodeSharedData sharedData;
 
+        protected BufferedDrawNodeSharedData SharedData => sharedData;
+
         /// <summary>
         /// Constructs an empty buffered container.
         /// </summary>
