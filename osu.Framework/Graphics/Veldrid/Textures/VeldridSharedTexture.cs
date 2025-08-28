@@ -48,6 +48,8 @@ namespace osu.Framework.Graphics.Veldrid.Textures
         }
         public bool UploadComplete => false;
 
+        public IntPtr NativePointer { get; }
+
         protected readonly IVeldridRenderer Renderer;
 
         private bool isDisposed;
@@ -59,6 +61,7 @@ namespace osu.Framework.Graphics.Veldrid.Textures
             Renderer = renderer;
             Width = (int) width;
             Height = (int) height;
+            NativePointer = texturePointer;
 
             // Initialize texture resources
             var texture = renderer.Factory.CreateTexture((ulong)texturePointer, TextureDescription.Texture2D(
