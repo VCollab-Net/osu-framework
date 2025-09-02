@@ -18,4 +18,4 @@ using osu.Framework.Testing;
 [assembly: InternalsVisibleTo("osu.Framework.Tests.Android")]
 [assembly: MetadataUpdateHandler(typeof(HotReloadCallbackReceiver))]
 
-[assembly: InternalsVisibleTo("OsuTest", AllInternalsVisible = true)]
+[assembly: InternalsVisibleTo("VCollab", AllInternalsVisible = true)]
