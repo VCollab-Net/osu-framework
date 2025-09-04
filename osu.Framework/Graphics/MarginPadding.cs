@@ -82,6 +82,17 @@ namespace osu.Framework.Graphics
             Top = Left = Bottom = Right = allSides;
         }
 
+        /// <summary>
+        /// Initialize horizontal and vertical margins
+        /// </summary>
+        /// <param name="horizontalMargin">Horizontal margin</param>
+        /// <param name="verticalMargin">Vertical margin</param>
+        public MarginPadding(float horizontalMargin, float verticalMargin)
+        {
+            Left = Right = horizontalMargin;
+            Top = Bottom = verticalMargin;
+        }
+
         public readonly bool Equals(MarginPadding other) => Top == other.Top && Left == other.Left && Bottom == other.Bottom && Right == other.Right;
 
         public override readonly string ToString() => $@"({Top}, {Left}, {Bottom}, {Right})";
