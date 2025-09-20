@@ -1331,6 +1331,9 @@ namespace osu.Framework.Platform
 
         private void updateFrameSyncMode()
         {
+            // We don't want automatic refresh rates for VCollab
+            return;
+
             if (Window == null)
                 return;
 
