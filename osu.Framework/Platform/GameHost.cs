@@ -1331,6 +1331,9 @@ namespace osu.Framework.Platform
 
         private void updateFrameSyncMode()
         {
+            // We don't want automatic refresh rates for VCollab
+
+            /*
             if (Window == null)
                 return;
 
@@ -1381,6 +1384,7 @@ namespace osu.Framework.Platform
 
             MaximumDrawHz = drawLimiter;
             MaximumUpdateHz = updateLimiter;
+            */
         }
 
         private void setVSyncMode()
