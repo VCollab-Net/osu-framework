@@ -212,7 +212,6 @@ namespace osu.Framework.Platform
 
                 if (!isDisposed)
                 {
-                    storage.Delete(finalPath);
                     storage.Move(temporaryPath, finalPath);
 
                     isDisposed = true;
